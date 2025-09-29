@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="fragments/base :: parent(~{::#content},~{::title})" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>this is home page</title>
+</head>
+
+<body>
+    <div id="content">
+        <div class="flex justify-center items-center py-8">
+            <div
+                class="block mx-4 p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    Sign up here to create your account
+                </h5>
+                <p class="font-normal text-gray-700 dark:text-gray-400 mb-4">
+                    Start managing your contacts efficiently by signing up now!
+                </p>
+
+                <form th:action="@{/do-register}" method="post" th:object="${userForm}" class="mt-4">
+                    <div class="mb-4">
+                        <label for="name"
+                            class="block mb-2 text-xs font-medium text-gray-900 dark:text-white" 
+                            >Your Name</label>
+                        <input type="text" id="name"
+                        th:field="*{name}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Enter your name here" required />
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="email"
+                            class="block mb-2 text-xs font-medium text-gray-900 dark:text-white">Email</label>
+                        <input type="email" id="email"
+                        th:field="*{email}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Enter your Email here" required />
+                    </div>
+
+                        <div class="mb-4">
+                        <label for="password"
+                            class="block mb-2 text-xs font-medium text-gray-900 dark:text-white">Password</label>
+                        <input type="text" id="password"
+                        th:field="*{password}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Enter your password here" required />
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="contact"
+                            class="block mb-2 text-xs font-medium text-gray-900 dark:text-white">Contact</label>
+                        <input type="text" id="contact"
+                        th:field="*{contact}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Enter your contact number here" required />
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="about"
+                            class="block mb-2 text-xs font-medium text-gray-900 dark:text-white">About</label>
+                        <textarea id="about" rows="4"
+                        th:field="*{about}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Tell us about yourself..."></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Sign up
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
