@@ -85,7 +85,7 @@ public class PageController {
                 .provider(com.scm.entity.Providers.SELF)
                 .build();
         
-        // validate the form data
+          // validate the form data
         // save the data to the database
         userService.saveUser(user);
         // message success
