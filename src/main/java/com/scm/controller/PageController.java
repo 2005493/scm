@@ -86,7 +86,7 @@ public class PageController {
                 .build();
         
          // validate the form data
-           // save the data to the database
+        // save the data to the database
         userService.saveUser(user);
         // message success
         Message successMessage = Message
