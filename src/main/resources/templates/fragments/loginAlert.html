@@ -1,0 +1,32 @@
+<div
+  th:if="${session.successMessage}"
+  th:object="${session.successMessage}"
+  th:fragment="alert"
+  th:classappend="*{'text-'+messageType+'-800 rounded-lg bg-'+messageType+'-50 dark:bg-gray-800 dark:text-green-400'}"
+  class="flex items-center p-4 mb-4 text-sm"
+  role="alert"
+>
+  <svg
+    class="shrink-0 inline w-4 h-4 me-3"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    viewBox="0 0 20 20"
+  >
+    <path
+      d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+    />
+  </svg>
+  <span class="sr-only">Info</span>
+  <div>
+    <span class="font-medium" th:text="*{content}"></span>
+   
+  </div>
+   <th:block th:text="${@sessionHelper.removeSessionAttributes()}">Done</th:block>
+
+</div>
+
+// The 'th:object' attribute in Thymeleaf binds the HTML form directly to a model attribute or session attribute (e.g., set via session.setAttribute()).
+// This allows us to access and manipulate the Java object’s fields and methods directly from the template using 'th:field' or expression syntax.
+// Essentially, 'th:object' serves as a bridge between the view and the backend class, enabling data binding and method access.
+// In this case, it binds to the 'successMessage' object stored in the session, allowing us to access its properties (like 'content') directly in the template.

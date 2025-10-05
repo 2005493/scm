@@ -41,7 +41,7 @@ public class User {
     private String phoneNumber;
 
 
-    @Enumerated
+    @Enumerated(value = jakarta.persistence.EnumType.STRING)
     //SELF, GOOGLE, FACEBOOK, GITHUB,LINKEDIN
     private Providers provider=Providers.SELF;
     

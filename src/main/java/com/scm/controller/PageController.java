@@ -12,7 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.scm.entity.User;
 import com.scm.form.UserForm;
+import com.scm.helper.Message;
 import com.scm.service.UserServiceImpl;
+
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -66,7 +69,7 @@ public class PageController {
 
     // processing Register form
     @PostMapping("/do-register")
-    public String processRegister(@ModelAttribute UserForm userForm) {
+    public String processRegister(@ModelAttribute UserForm userForm,HttpSession session) {
         // fetch the form data--> we will make a class to store the data i.e UserForm
         System.out.println("User Form Data: " + userForm);
 
@@ -79,12 +82,19 @@ public class PageController {
                 .phoneNumber(userForm.getContact())
                 .emailVerified(false)
                 .phoneVerified(false)
+                .provider(com.scm.entity.Providers.SELF)
                 .build();
         
         // validate the form data
         // save the data to the database
         userService.saveUser(user);
         // message success
+        Message successMessage = Message
+                .builder()
+                .content("Registration successful! Please log in.")
+                .messageType(com.scm.helper.MessageType.GREEN)
+                .build();
+        session.setAttribute("successMessage", successMessage);
         // redirect to register page
         return "redirect:/register"; // Redirect to register page with success message
 
